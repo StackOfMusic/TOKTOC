@@ -11,7 +11,7 @@ class News(models.Model):
 class Article(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    year = models.IntegerField(max_length=4)
+    year = models.IntegerField()
     description = models.TextField()
 
     def __str__(self):
