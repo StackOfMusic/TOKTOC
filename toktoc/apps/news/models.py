@@ -2,7 +2,7 @@ from django.db import models
 
 
 class News(models.Model):
-    name = models.CharField(max=200)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
@@ -10,7 +10,7 @@ class News(models.Model):
 
 class Article(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE)
-    title = models.CharField(max=200)
+    title = models.CharField(max_length=200)
     year = models.IntegerField(max_length=4)
     description = models.TextField()
 
