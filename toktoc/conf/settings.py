@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 ]
 
 CUSTOM_APPS = [
-    'news'
+    'apps.news'
 ]
 
 INSTALLED_APPS += CUSTOM_APPS
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'toktoc.wsgi.application'
+WSGI_APPLICATION = 'conf.wsgi.application'
 
 
 # Database
