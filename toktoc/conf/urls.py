@@ -19,6 +19,6 @@ from .views import LandingView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', LandingView.as_view()),
+    path('', LandingView.as_view(), name='home'),
     path('news/', include('apps.news.urls', namespace='news'))
 ]
