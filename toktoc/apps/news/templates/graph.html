@@ -152,16 +152,29 @@
     <div id='stars3'></div>
 </header>
 
-<section class="about-section text-center" id="wordcloud">
+<section class="about-section text-center">
     <div class="container">
-        <div style="height: 100px;"></div>
-        <div id='wordcloud'></div>
+        <div class="row">
+            <div class="col-6" id="2019" style="color: whitesmoke;font-size: 50px; font-weight: bolder;">2019</div>
+            <div class="col-6" id="2020" style="color: whitesmoke;font-size: 50px; font-weight: bolder;">2020</div>
+
+        </div><br>
+        <div class="row">
+
+            <div class="col-6" id="wordcloud"></div>
+            <div class="col-6" id="wordcloud2"></div>
+        </div><br>
         <script>
-            var myWords = [{word: "Running", size: "10"}, {word: "Surfing", size: "20"}, {word: "Climbing", size: "50"}, {word: "Kiting", size: "30"}, {word: "Sailing", size: "20"}, {word: "Snowboarding", size: "60"} ]
+            var myWords = [ {word: "Sexual Slaves", size: "50"}, {word: "plants", size: "30"}, {word: "Iran", size: "10"}, {word: "dust", size: "40"}, {word: "Tottenham", size: "30"} , {word: "suicide", size: "40"} , {word: "Dodgers", size: "40"} , {word: "nuclear", size: "30"} , {word: "huawei", size: "50"} , {word: "typhoon", size: "10"}, {word: "AI", size: "70"} , {word:"Voter", size: "40"} , {word: "cryptocurrency", size: "30"}, {word: "negative", size: "40"} , {word: "SON", size: "10"}    ]
             // set the dimensions and margins of the graph
+
             var margin = {top: 10, right: 10, bottom: 10, left: 10},
                 width = 450 - margin.left - margin.right,
                 height = 450 - margin.top - margin.bottom;
+
+            var margin2 = {top: 10, right: 10, bottom: 10, left: 10},
+                width2 = 450 - margin.left - margin.right,
+                height2 = 450 - margin.top - margin.bottom;
 
             // append the svg object to the body of the page
             var svg = d3.select("#wordcloud").append("svg")
@@ -199,15 +212,57 @@
                       return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                     })
                     .text(function(d) { return d.text; });
-            }
-        </script>
-    </div>
-</section>
 
+            }
+            var myWords2 = [{word: "COVID", size: "80"}, {word: "pandemic", size: "40"}, {word: "Shincheonji", size: "30"}, {word: "infection", size: "10"}, {word: "iran", size: "10"}, {word: "KBO", size: "50"} , {word: "itaewon", size: "30"} , {word: "Daegu", size: "40"} , {word: "nuclear", size: "20"} , {word: "church", size: "10"} , {word: "patients", size: "40"}, {word: "baseball", size: "30"} , {word:"Voter", size: "20"} , {word: "distancing", size: "20"}, {word: "cryptocurrency", size: "20"}, {word: "positive", size: "40"} , {word: "Virus", size: "60"} , {word: "KBO", size: "50"}    ]
+            // set the dimensions and margins of the graph
+
+
+            // append the svg object to the body of the page
+            var svg2 = d3.select("#wordcloud2").append("svg")
+                .attr("width", width2 + margin2.left + margin2.right)
+                .attr("height", height2 + margin2.top + margin2.bottom)
+              .append("g")
+                .attr("transform",
+                      "translate(" + margin2.left + "," + margin2.top + ")");
+
+            // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+            // Wordcloud features that are different from one word to the other must be here
+            var layout2 = d3.layout.cloud()
+              .size([width2, height2])
+              .words(myWords2.map(function(d) { return {text: d.word, size:d.size}; }))
+              .padding(5)        //space between words
+              .rotate(function() { return ~~(Math.random() * 2) * 90; })
+              .fontSize(function(d) { return d.size; })      // font size of words
+              .on("end", draw2);
+            layout2.start();
+
+            // This function takes the output of 'layout' above and draw the words
+            // Wordcloud features that are THE SAME from one word to the other can be here
+            function draw2(words) {
+              svg2
+                .append("g")
+                  .attr("transform", "translate(" + layout2.size()[0] / 2 + "," + layout2.size()[1] / 2 + ")")
+                  .selectAll("text")
+                    .data(words)
+                  .enter().append("text")
+                    .style("font-size", function(d) { return d.size; })
+                    .style("fill", "whitesmoke")
+                    .attr("text-anchor", "middle")
+                    .style("font-family", "Impact")
+                    .attr("transform", function(d) {
+                      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                    })
+                    .text(function(d) { return d.text; });
+
+            }
+
+        </script>
+
+    </div>
 
 
 <!-- About-->
-<section class="about-section text-center" id="about">
     <div class="container">
         <div class="content-wrapper">
             <!-- Main content -->
@@ -218,21 +273,20 @@
                     <div class="card">
                       <div class="card-header border-0">
                         <div class="d-flex justify-content-between">
-                          <h3 class="card-title">Online Store Visitors</h3>
-                          <a href="javascript:void(0);">View Report</a>
+                          <h3 class="card-title">Sentiment Analaysis</h3>
                         </div>
                       </div>
                       <div class="card-body">
                         <div class="d-flex">
                           <p class="d-flex flex-column">
-                            <span class="text-bold text-lg">820</span>
-                            <span>Visitors Over Time</span>
+                            <span class="text-bold text-lg">Line-Chart</span>
+                            <span>Positive / Negative</span>
                           </p>
                           <p class="ml-auto d-flex flex-column text-right">
                             <span class="text-success">
-                              <i class="fas fa-arrow-up"></i> 12.5%
+                              <i class="fas fa-arrow-up"></i> 30.97%
                             </span>
-                            <span class="text-muted">Since last week</span>
+                            <span class="text-muted">Since last year</span>
                           </p>
                         </div>
                         <!-- /.d-flex -->
@@ -243,11 +297,11 @@
 
                         <div class="d-flex flex-row justify-content-end">
                           <span class="mr-2">
-                            <i class="fas fa-square text-primary"></i> This Week
+                            <i class="fas fa-square text-primary"></i> 2020 YEAR
                           </span>
 
                           <span>
-                            <i class="fas fa-square text-gray"></i> Last Week
+                            <i class="fas fa-square text-gray"></i> 2019 YEAR
                           </span>
                         </div>
                       </div>
@@ -261,21 +315,20 @@
                     <div class="card">
                       <div class="card-header border-0">
                         <div class="d-flex justify-content-between">
-                          <h3 class="card-title">Sales</h3>
-                          <a href="javascript:void(0);">View Report</a>
+                          <h3 class="card-title">Sentiment Analaysis</h3>
                         </div>
                       </div>
                       <div class="card-body">
                         <div class="d-flex">
                           <p class="d-flex flex-column">
-                            <span class="text-bold text-lg">$18,230.00</span>
-                            <span>Sales Over Time</span>
+                            <span class="text-bold text-lg">Bar Chart</span>
+                            <span>Positive / Negative</span>
                           </p>
                           <p class="ml-auto d-flex flex-column text-right">
                             <span class="text-success">
-                              <i class="fas fa-arrow-up"></i> 33.1%
+                              <i class="fas fa-arrow-up"></i> 30.97%
                             </span>
-                            <span class="text-muted">Since last month</span>
+                            <span class="text-muted">Since last year</span>
                           </p>
                         </div>
                         <!-- /.d-flex -->
@@ -286,11 +339,11 @@
 
                         <div class="d-flex flex-row justify-content-end">
                           <span class="mr-2">
-                            <i class="fas fa-square text-primary"></i> This year
+                            <i class="fas fa-square text-primary"></i> 2020 YEAR
                           </span>
 
                           <span>
-                            <i class="fas fa-square text-gray"></i> Last year
+                            <i class="fas fa-square text-gray"></i> 2019 YEAR
                           </span>
                         </div>
                       </div>
@@ -306,9 +359,80 @@
               <!-- /.container-fluid -->
             </div>
             <!-- /.content -->
+            <div class="card" style="margin-top: 50px;">
+              <div class="card-header">
+                <h3 class="card-title" style="font-weight: bolder">Extracted keywords</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered" id="tab1">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Keywords</th>
+                      <th>Weight</th>
+                      <th style="width: 40px">Label</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>COVID19</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar progress-bar-danger bg-danger" style="width: 85%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-danger">85%</span></td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>Pandemic</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar bg-warning" style="width: 70%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-warning">70%</span></td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>KBO</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div class="progress-bar bg-primary" style="width: 50%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-primary">30%</span></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>Parasite</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div class="progress-bar bg-success" style="width: 30%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-success">s0%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#tab1">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
           <!-- /.content-wrapper -->
     </div>
+
 </section>
 
 
