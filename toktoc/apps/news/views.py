@@ -3,7 +3,9 @@ from django.views.generic import ListView, TemplateView, RedirectView
 
 from .models import Article
 from toktoc.core import data_preprocessing_sem, ir_model, select_date, sentiment_analysis, topic_modeling
+from django.conf import settings
 
+CORE_DIR = settings.BASE_DIR + '/core/'
 
 class NewsListView(ListView):
     model = Article
@@ -15,15 +17,15 @@ class GraphView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(GraphView, self).get_context_data()
-        with open('topic_modeling_result', 'r') as f:
+        with open(CORE_DIR + 'topic_modeling_result_2019.txt', 'r') as f:
             result_context = f.read()
         context['topic_modeling'] = result_context
 
-        with open('sem_average_1.txt', 'r') as f:
+        with open(CORE_DIR + 'sem_average_1.txt', 'r') as f:
             result_context = f.read()
         context['sentiment_result1'] = result_context
 
-        with open('sem_average_2.txt', 'r') as f:
+        with open(CORE_DIR + 'sem_average_2.txt', 'r') as f:
             result_context = f.read()
         context['sentiment_result2'] = result_context
 
