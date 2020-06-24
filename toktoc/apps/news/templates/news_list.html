@@ -119,9 +119,9 @@
         <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">TOKTOC</a><button class="navbar-toggler navbar-toggler-right"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Contact</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'news:news_list' %}">News</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'news:graph' %}">Results</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'news:result' %}">Evaluation</a></li>
             </ul>
         </div>
     </div>
@@ -165,7 +165,7 @@
                 <li class="nav-item">
                 <a class="nav-link" id="custom-content-above-settings-tabs30" data-toggle="pill" href="#custom-content-above-settings30" role="tab" aria-controls="custom-content-above-settings" aria-selected="false">June</a>
             </ul>
-            <div class="tab-content" id="custom-content-below-tabContent">
+            <a class="tab-content" id="custom-content-below-tabContent">
                 <br>
               <div class="tab-pane fade show active" id="custom-content-above-homess" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
                   <img src= '{% static 'img/parasite.jpg'%}' alt="" align="left" width="200" height="200">
@@ -202,9 +202,8 @@
                   The country has continued to report sporadic infections in places such as cram schools and churches, at a time when it is still grappling with cases traced to Seoul's nightlife area of Itaewon.
                   The total caseload linked to Itaewon reached 270 as of noon Sunday, according to the KCDC.
                   Alarmed by the spike in virus cases, health authorities imposed a tighter social distancing campaign in the densely populated metropolitan area of Seoul and the surrounding region over the next two weeks through June 14.
-              </div>
+              </div></a>
             </div>
-            <br>
             <h4 class="mt-5 ">2019 News Datasets</h4>
             <ul class="nav nav-tabs" id="custom-content-above-tab" role="tablist" style="font-size: 15px;">
               <li class="nav-item">
@@ -323,15 +322,7 @@
 
 <!-- Signup-->
 <section class="signup-section" id="projects" >
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-lg-8 mx-auto text-center">
-                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                <form class="form-inline d-flex"><input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." /><button class="btn btn-primary mx-auto" type="submit">Subscribe</button></form>
-            </div>
-        </div>
-    </div>
+
 </section>
 <!-- Contact-->
 <section class="contact-section bg-black" id="signup">
@@ -377,7 +368,7 @@
     </div>
 </section>
 <!-- Footer-->
-<footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
+<footer class="footer bg-black small text-center text-white-50"><div class="container">TOKTOC</div></footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
