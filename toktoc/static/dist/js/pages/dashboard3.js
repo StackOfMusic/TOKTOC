@@ -13,17 +13,17 @@ $(function () {
   var salesChart  = new Chart($salesChart, {
     type   : 'bar',
     data   : {
-      labels  : ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels  : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AIG', 'SEP', 'OCT', 'NOV', 'DEC'],
       datasets: [
         {
           backgroundColor: '#007bff',
           borderColor    : '#007bff',
-          data           : [1000, 2000, 3000, 2500, 2700, 2500, 3000]
+          data           : [0.086, 0.084, 0.089, 0.093, 0.068, 0.084],
         },
         {
           backgroundColor: '#ced4da',
           borderColor    : '#ced4da',
-          data           : [700, 1700, 2700, 2000, 1800, 1500, 2000]
+          data           : [0.064, 0.071, 0.054, 0.058, 0.060, 0.075, 0.058, 0.060, 0.077, 0.067, 0.066, 0.060],
         }
       ]
     },
@@ -50,16 +50,8 @@ $(function () {
             zeroLineColor: 'transparent'
           },
           ticks    : $.extend({
-            beginAtZero: true,
-
-            // Include a dollar sign in the ticks
-            callback: function (value, index, values) {
-              if (value >= 1000) {
-                value /= 1000
-                value += 'k'
-              }
-              return '$' + value
-            }
+            beginAtZero : true,
+            suggestedMax: 0.1
           }, ticksStyle)
         }],
         xAxes: [{
@@ -76,10 +68,10 @@ $(function () {
   var $visitorsChart = $('#visitors-chart')
   var visitorsChart  = new Chart($visitorsChart, {
     data   : {
-      labels  : ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
+      labels  : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AIG', 'SEP', 'OCT', 'NOV', 'DEC'],
       datasets: [{
         type                : 'line',
-        data                : [100, 120, 170, 167, 180, 177, 160],
+        data                : [0.086, 0.084, 0.089, 0.093, 0.068, 0.084],
         backgroundColor     : 'transparent',
         borderColor         : '#007bff',
         pointBorderColor    : '#007bff',
@@ -90,7 +82,7 @@ $(function () {
       },
         {
           type                : 'line',
-          data                : [60, 80, 70, 67, 80, 77, 100],
+          data                : [0.064, 0.071, 0.054, 0.058, 0.060, 0.075, 0.058, 0.060, 0.077, 0.067, 0.066, 0.060],
           backgroundColor     : 'tansparent',
           borderColor         : '#ced4da',
           pointBorderColor    : '#ced4da',
@@ -124,7 +116,7 @@ $(function () {
           },
           ticks    : $.extend({
             beginAtZero : true,
-            suggestedMax: 200
+            suggestedMax: 0.1
           }, ticksStyle)
         }],
         xAxes: [{
